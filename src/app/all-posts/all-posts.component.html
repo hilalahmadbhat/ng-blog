@@ -1,1 +1,8 @@
-<p>all-posts works!</p>
+<ul>
+    <li *ngFor="let post of posts">
+        <p>
+            {{post.title}}
+            <span><a routerLink="{{'/posts/'+post.id}}">readmore...</a></span>
+        </p>
+    </li>
+</ul>
