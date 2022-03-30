@@ -7,7 +7,8 @@ import { SinglePostComponent } from './single-post/single-post.component';
 const routes: Routes = [
   {path : "posts" , component : AllPostsComponent },
   {path : "posts/:id", component : SinglePostComponent},
-  {path : "**", component : NotFoundComponent}
+  {path : "", component : AllPostsComponent},
+  {path : "**", component : NotFoundComponent},
 ];
 
 @NgModule({

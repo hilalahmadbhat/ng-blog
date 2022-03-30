@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-all-posts',
@@ -9,11 +10,16 @@ import { PostsService } from '../posts.service';
 export class AllPostsComponent implements OnInit {
 
   public posts:any = [];
-
-  constructor(private postsService :PostsService) { }
+  public pageno:number = 1;
+  constructor(private postsService :PostsService,private activatedroute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.postsService.getAllPosts()
+    this.activatedroute.queryParams
+    .subscribe((params)=>{
+      this.pageno = params['page']
+    })
+    
+    this.postsService.getAllPosts(this.pageno)
     .subscribe((data)=>{
       console.log(data)
       this.posts = data

@@ -1,8 +1,12 @@
-<ul>
-    <li *ngFor="let post of posts">
-        <p>
-            {{post.title}}
-            <span><a routerLink="{{'/posts/'+post.id}}">readmore...</a></span>
-        </p>
-    </li>
-</ul>
+<div *ngIf="posts.length>0;else nopostsfoundblock">
+    <ul>
+        <li *ngFor="let post of posts">
+            <p>
+                {{post.title}}
+                <span><a routerLink="{{'/posts/'+post._id}}">readmore...</a></span>
+            </p>
+        </li>
+    </ul>
+</div>
+
+<ng-template #nopostsfoundblock>no posts found...</ng-template>
