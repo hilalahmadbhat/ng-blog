@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../posts.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-post',
@@ -10,12 +11,12 @@ import { PostsService } from '../posts.service';
 })
 export class EditPostComponent implements OnInit {
   postForm  = new FormGroup({
-    title : new FormControl(''),
+    title       : new FormControl(''),
     description : new FormControl('')
   })
   
 
-  constructor(private postService:PostsService,private _activatedRoute:ActivatedRoute) { }
+  constructor(private postService:PostsService,private _activatedRoute:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     const { postid } = this._activatedRoute.snapshot.params
@@ -29,9 +30,10 @@ export class EditPostComponent implements OnInit {
 
   updatePostData(){
     const { postid } = this._activatedRoute.snapshot.params
-    console.log(postid)
+    //console.log(postid)
     this.postService.updatePost(this.postForm.value,postid).subscribe((data)=>{
       console.log(data)
+      this.router.navigate(["/posts/",postid]);
     })
     //console.log(this.postForm.value)
   }
