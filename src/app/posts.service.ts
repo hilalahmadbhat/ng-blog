@@ -15,4 +15,9 @@ export class PostsService {
   getSinglePost(postid:string){
     return this._http.get(`http://localhost:3000/posts/${postid}`);
   }
+
+  updatePost(post:object,postid:string){
+    //console.log(post)
+    return this._http.put(`http://localhost:3000/posts/${postid}`,post);
+  }
 }

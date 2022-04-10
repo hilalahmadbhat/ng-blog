@@ -1,0 +1,14 @@
+<div>
+    
+    <form [formGroup]="postForm" (ngSubmit)="updatePostData()">
+        <label>Titles</label>
+        <input formControlName="title" />
+        <br/>
+        <label>Description</label>
+        <textarea type="text" formControlName="description"></textarea>
+        <br/>
+        <input type="submit" value="update">
+        <hr/>
+        {{postForm.value|json}}
+    </form>
+</div>

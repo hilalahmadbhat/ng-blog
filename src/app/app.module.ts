@@ -7,6 +7,8 @@ import { SinglePostComponent } from './single-post/single-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditPostComponent } from './edit-post/edit-post.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { HttpClientModule } from '@angular/common/http';
     AllPostsComponent,
     SinglePostComponent,
     NotFoundComponent,
-    TopNavComponent
+    TopNavComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
